@@ -1,6 +1,6 @@
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-
+import { initializeApp } from "firebase/app"
+import { getAnalytics } from "firebase/analytics"
+import { getFirestore } from "firebase/firestore"
 const firebaseConfig = {
   apiKey: "AIzaSyCwE4CqDc3o-zGwOrSSJThxZVydcr9dPpk",
   authDomain: "miniblog-ck.firebaseapp.com",
@@ -11,5 +11,8 @@ const firebaseConfig = {
   measurementId: "G-B1GXQZWE9D"
 };
 
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+const app = initializeApp(firebaseConfig)
+const analytics = getAnalytics(app)
+const db = getFirestore(app)
+
+export {db}
