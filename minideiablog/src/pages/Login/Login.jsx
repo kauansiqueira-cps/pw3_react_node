@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './Login.modules.css'
 import { useAuthentication } from '../../hooks/useAuthentication'
 import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
-  const [email, setEmail] = setState()
-  const [password, setPassword] = setState()
-  const [error, setError] = setState()
+  const [email, setEmail] = useState()
+  const [password, setPassword] = useState()
+  const [error, setError] = useState()
 
   const { login, error: authError, loading } = useAuthentication()
   const navigate = useNavigate()
@@ -43,7 +43,6 @@ const Login = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder='Digite seu e-mail' 
-          
           />
         </label>
 
