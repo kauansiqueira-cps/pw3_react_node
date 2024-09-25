@@ -1,7 +1,7 @@
 import './App.css'
 import Footer from './components/Footer'
 import NavBar from './components/NavBar'
-import CreatePost from './pages/CreatePost/CreatePost'
+import Login from './pages/Login/Login'
 
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
     <>
       <div>
         <NavBar/>
-        <CreatePost />
+        <Login />
         <Footer/>
 
         
