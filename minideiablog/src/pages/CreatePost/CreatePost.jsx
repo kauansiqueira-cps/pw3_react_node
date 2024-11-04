@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import banner from "/banner_home.png"
-import style from './CreatePost.module.css';
+// import banner from "/banner_home.png"
+import styles from './CreatePost.module.css';
 import { useInsertDocument } from '../../hooks/useInsertDocument';
-// import { useAuthValue } from '../../context/AuthContext';
+import { useAuthValue } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom'
 
 const CreatePost = () => {
