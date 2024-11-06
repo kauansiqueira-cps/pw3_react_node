@@ -36,16 +36,16 @@ export const useInsertDocument = (docCollection) => {
         try {
             const newDocument = { ...document, createdAt: Timestamp.now() }
 
-            const insertDocument = await addDoc(
+            const insertedDocument = await addDoc(
                 collection(db, docCollection),
                 newDocument
             )
 
             checkCancelBeforeDispatch({
                 type: "INSERT_DOC",
-                payload: insertDocument
+                payload: insertedDocument
             })
-        } catch(error){
+        } catch(error) {
             checkCancelBeforeDispatch({
                 type: "ERROR",
                 payload: error.message
