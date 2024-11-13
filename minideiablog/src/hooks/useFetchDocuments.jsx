@@ -11,9 +11,7 @@ import {
 export const useFetchDocuments = (docCollection, search = null, uid = null) => {
   const [documents, setDocuments] = useState(null);
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(null);
-
-  // deal with memory leak
+  const [loading, setLoading] = useState(false);
   const [cancelled, setCancelled] = useState(false);
 
   useEffect(() => {
@@ -24,28 +22,28 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
 
       setLoading(true);
 
-      const collectionRef = await collection(db, docCollection);
+      const collectionRef = collection(db, docCollection);
 
       try {
         let q;
 
         if (search) {
-          q = await query(
+          q = query(
             collectionRef,
             where("tags", "array-contains", search),
             orderBy("createdAt", "desc")
           );
         } else if (uid) {
-          q = await query(
+          q = query(
             collectionRef,
             where("uid", "==", uid),
             orderBy("createdAt", "desc")
           );
         } else {
-          q = await query(collectionRef, orderBy("createdAt", "desc"));
+          q = query(collectionRef, orderBy("createdAt", "desc"));
         }
 
-        await onSnapshot(q, (querySnapshot) => {
+        const unsubscribe = onSnapshot(q, (querySnapshot) => {
           setDocuments(
             querySnapshot.docs.map((doc) => ({
               id: doc.id,
@@ -53,6 +51,10 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
             }))
           );
         });
+
+        return () => {
+          unsubscribe();
+        };
       } catch (error) {
         console.log(error);
         setError(error.message);
@@ -63,8 +65,6 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
 
     loadData();
   }, [docCollection, search, uid, cancelled]);
-
-  console.log(documents);
 
   useEffect(() => {
     return () => setCancelled(true);

@@ -12,6 +12,8 @@ import CreatePost from './pages/CreatePost/CreatePost'
 import Register from './pages/Register/Register'
 import loading from '/loading.gif'
 import { useEffect, useState } from 'react'
+import Dashboard from './pages/Dashboard/Dashboard'
+
 
 function App() {
   const [user, setUser] = useState(undefined)
@@ -41,6 +43,7 @@ function App() {
                 <Route path='/login' element={<Login />}></Route>
                 <Route path='/register' element={<Register />}></Route>
                 <Route path='/post/create' element={<CreatePost />}></Route>
+                <Route path='/dashboard' element={<Dashboard />}></Route>
               </Routes>
             </div>
             <Footer />
