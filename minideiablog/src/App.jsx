@@ -13,6 +13,7 @@ import Register from './pages/Register/Register'
 import loading from '/loading.gif'
 import { useEffect, useState } from 'react'
 import Dashboard from './pages/Dashboard/Dashboard'
+import Post from './pages/Post/Post'
 
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
                 <Route path='/register' element={<Register />}></Route>
                 <Route path='/post/create' element={<CreatePost />}></Route>
                 <Route path='/dashboard' element={<Dashboard />}></Route>
+                {/* <Route path='/post/' element={<Post />}></Route> */}
               </Routes>
             </div>
             <Footer />
