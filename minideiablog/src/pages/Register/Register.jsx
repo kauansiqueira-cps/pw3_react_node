@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react'
 import { useAuthentication } from '../../hooks/useAuthentication'
 
 const Register = () => {
-  //#region Controller Service
   const [displayName, setDisplayName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -36,8 +35,7 @@ const Register = () => {
       setError(authError)
     }
   }, [authError])
-  //#endregion
-  //#region View Browser Page
+
   return (
     <div>
       <h1>Compartilhe suas experiências com outros nomades</h1>
@@ -88,7 +86,6 @@ const Register = () => {
       </form>
     </div>
   )
-  //#endregion
 }
 
 export default Register

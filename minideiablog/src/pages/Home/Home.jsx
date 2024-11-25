@@ -40,7 +40,7 @@ const Home = () => {
           {posts && posts.length === 0 && (
             <>
               <div className={styles.noposts}>
-                <p>Não encontramos Iedias cara!</p>
+                <p>Não encontramos Ideias cara!</p>
                 <Link to="/post/create">
                   <img src={logo} alt="Logo do Site" />
                 </Link>
